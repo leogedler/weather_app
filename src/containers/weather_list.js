@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Charts from '../components/chart';
 import GoogleMap from '../components/google_map';
+import './style.css';
 
 
 
