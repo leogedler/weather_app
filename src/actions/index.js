@@ -5,12 +5,21 @@ const ROUTE_URL = `https://api.openweathermap.org/data/2.5/forecast?appid=${API_
 
 export const FETCH_WEATHER = 'FETCH_WEATHER';
 
-export function fetchWeather(city){
+export const fetchWeather = async (city) => {
     const url = `${ROUTE_URL}&q=${city},us`;
-    const request = axios.get(url);
+    let request;
+    let type;
+    try{
+        request = await axios.get(url);
+        type = FETCH_WEATHER;
+    }catch(error){
+        type = 'ERROR_FETCHING_WEATHER';
+        console.log('error', error);
+    }
+    console.log('request', request);
 
     return {
-        type: FETCH_WEATHER,
+        type: type,
         payload: request
     };
 }
